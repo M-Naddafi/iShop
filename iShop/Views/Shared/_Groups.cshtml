@@ -1,0 +1,18 @@
+﻿@using iShop.Data.Repositories
+@inject IGroupRepository _GroupRepository;
+
+<div class="dropdown">
+    <a class="btn dropdown-toggle text-secondary" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+        گروه ها
+    </a>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="text-align : right">
+        <li>
+            @foreach (var item in _GroupRepository.GetAllCategories())
+            {
+                <a class="dropdown-item" href="/Group/@item.Id/@item.Name">@item.Name</a>
+            }
+        </li>
+
+    </ul>
+</div>

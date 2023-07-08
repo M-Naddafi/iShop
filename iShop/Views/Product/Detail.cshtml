@@ -1,0 +1,50 @@
+﻿@model DetailsViewModel
+@{
+    ViewData["Title"] = "کالا " + Model.Product.Name;
+}
+
+
+
+<div class="row">
+    <div class="card d-flex" style="height : 26rem">
+        <h1 class="display-5">@Model.Product.Name</h1>
+        <hr />
+        <div class="row">
+            <div class="col-3">
+                <img src="@($"/images/{Model.Product.Id}.jpg")"
+                     alt="@Model.Product.Name"
+                     height="300"
+                     width="300" />
+            </div>
+            <div class="col-9">
+                @foreach (var item in Model.Categories)
+                {
+                    <span style="color : gray">@item.Name</span>
+                }
+                <p class="py-3 text-justify">@Model.Product.Description</p>
+                <div style="display : flex ; justify-content :space-between;align-items : center">
+                    <h3 style="text-align : left;">@Model.Product.Price <span style="color : gray">تومان</span></h3>
+
+                    <div>
+                        @if (Model.Product.QuantityInStock == 0)
+                        {
+                            <a class="btn btn-secondary" style="width : 10rem" href="#">
+                                ناموجود
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-primary" style="width : 10rem" asp-controller="Product" asp-action="AddToCart" asp-route-itemId="@Model.Product.Id">
+                                افزودن به سبد خرید
+                            </a>
+                        }
+                        <a class="btn btn-outline-danger" style="width : 10rem" asp-controller="Home" asp-action="Index">
+                            صفحه اصلی
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ShowGroupViewModel>
+
+<div class="container">
+    <div class="row mt-2 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <a href="/Group/@item.GroupId/@item.Name">
+                    <div class="card p-2 box">
+                        <div class="d-flex justify-content-between align-items-center p-2">
+                            <div class="flex-column lh-1 imagename">@item.Name</div>
+                            <div> <img src="/images/GroupsImages/@(item.GroupId).png" height="100" width="100" /> </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿@model Product
+
+
+<div class="col-3">
+    <div class="card product text-center" style="margin-top : 2em">
+        <img src="/images/@(Model.Id).jpg" height="200" width="160" class="card-img-top bg-dark" />
+        <div class="card-body">
+            <h5 class="card-title text-center" style="height : 4em">@Model.Name</h5>
+            <p class="text-center">قیمت : @Model.Price</p>
+            <p class="text-danger text-center">باقیمانده در انبار : <span class="text-secondary">@Model.QuantityInStock</span></p>
+            <a class="btn btn-outline-primary w-75 text-center"
+               asp-action="Detail"
+               asp-controller="Product"
+               asp-route-id="@Model.Id">مشاهده</a>
+        </div>
+    </div>
+</div>
